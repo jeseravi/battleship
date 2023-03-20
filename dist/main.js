@@ -1,1 +1,1 @@
-alert("working bish");
+(()=>{"use strict";const t=new class{constructor(t,i,s){this.length=t,this.timesHit=i,this.SunkChecker=s}shipHitter(){this.timesHit++,this.timesHit==this.length&&alert("u ded")}}(2,0,!1);t.shipHitter(),t.shipHitter(),console.log(t.timesHit)})();

@@ -6,22 +6,26 @@
 //ships should havea a hit() function that calculates it based on their length and number of hits
 
 //factory function 
-const Ship = (length, timesHit, sunk) => {
+export class Ship{
 
-    return{
-        length: length,
-        timesHit: timesHit,
-        sunk: sunk
+    constructor(length,timesHit,sunkChecker){
+        this.length = length;
+        this.timesHit = timesHit;
+        this.SunkChecker = sunkChecker;
     }
 
-    function hit(){
-        timesHit++;
-    }
-
-    function isSunk(){
-        if(timesHit==length){
-            sunk==true;
+    shipHitter(){
+        this.timesHit++;
+        if(this.timesHit==this.length){
+            alert("u ded")
         }
     }
 
+    
+
+    
+
+    
+
 }
+
