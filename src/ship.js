@@ -11,13 +11,13 @@ export class Ship{
     constructor(length,timesHit,sunkChecker){
         this.length = length;
         this.timesHit = timesHit;
-        this.SunkChecker = sunkChecker;
+        this.sunkChecker = sunkChecker;
     }
 
     shipHitter(){
         this.timesHit++;
         if(this.timesHit==this.length){
-            alert("u ded")
+            this.sunkChecker==false;
         }
     }
 

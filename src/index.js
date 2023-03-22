@@ -6,11 +6,18 @@ import{Gameboard} from "./gameboard"
 //create the overall container for the page
 generateElement("div","","","content","overallContainer","overallContainer")
 
+//header container
+generateElement("div","","","overallContainer","headerContainer","headerContainer")
+generateElement("div","","Battleship","headerContainer","header","header")
+
+//container that contains the board and sidebar
+generateElement("div","","","overallContainer","gameContainer","gameContainer")
+
 //create the board container
-generateElement("div","","","overallContainer","boardContainer","boardContainer")
+generateElement("div","","","gameContainer","boardContainer","boardContainer")
 
 //create the sidebar where the ships will be selectable
-generateElement("div","","","overallContainer","sidebarContainer","sidebarContainer")
+generateElement("div","","","gameContainer","sidebarContainer","sidebarContainer")
 
 //create divs within sidebar to contain the selectable ships
 generateElement("div","","","sidebarContainer","tinyShipContainer","tinyShipContainer")
@@ -83,7 +90,6 @@ boardMaker(100);
 
 //also need a way to indicate how large the ship is? Maybe a hover effect that lights up the buttons?
 
-//maybe make the buttons pure white? looks kind of ugly with this color.
 
 
 
