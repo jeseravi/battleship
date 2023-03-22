@@ -1,3 +1,9 @@
+#overallContainer{
+    display:grid;
+    grid-template-columns:3fr 150px;
+    grid-template-rows:1fr 1fr 4fr;
+}
+
 #boardContainer{
     max-width:500px;
     max-height:500px;
@@ -7,8 +13,46 @@
   }
   
   .boardButton{
+    border-width:5px;
     min-height:50px;
     max-height:50px;
     min-width:50px;
     max-width:50px;
   }
+
+#sidebarContainer{
+
+    display:flex;
+
+       
+
+}
+
+#sidebarShipContainer{
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.tinyShip{
+    background-color:rgb(24, 223, 24);
+}
+
+.mediumShip{
+    background-color:rgb(224, 238, 36);
+}
+
+.largeShip{
+    background-color:rgb(241, 165, 24);
+}
+
+
+#sidebarButton{
+    
+    border-width: 5px;
+    min-height:50px;
+    max-height:50px;
+    min-width:50px;
+    max-width:50px;
+
+}

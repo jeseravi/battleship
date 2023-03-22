@@ -3,13 +3,38 @@ import{shipHitter} from "./shipCreator"
 import{Ship} from "./ship"
 import{Gameboard} from "./gameboard"
 
+//create the overall container for the page
+generateElement("div","","","content","overallContainer","overallContainer")
 
-//create the basic divs
-generateElement("div","","","content","boardContainer","boardContainer")
+//create the board container
+generateElement("div","","","overallContainer","boardContainer","boardContainer")
 
+//create the sidebar where the ships will be selectable
+generateElement("div","","","overallContainer","sidebarContainer","sidebarContainer")
 
-//makes a ship
+//create divs within sidebar to contain the selectable ships
+generateElement("div","","","sidebarContainer","tinyShipContainer","tinyShipContainer")
+generateElement("div","","","sidebarContainer","mediumShipContainer","mediumShipContainer")
+generateElement("div","","","sidebarContainer","largeShipContainer","largeShipContainer")
+
+//make the ships
+//populate the sidebar with divs representing the ships
 const tinyShip = new Ship(2,0,false);
+shipDivMaker(tinyShip.length,"tinyShip");
+const mediumShip = new Ship(4,0,false);
+shipDivMaker(mediumShip.length,"mediumShip");
+const largeShip = new Ship(6,0,false);
+shipDivMaker(largeShip.length, "largeShip");
+
+function shipDivMaker(shipLength,nameOfShip){
+
+    //create dimension number of buttons
+    for (let i=0;i<shipLength;i++){        
+        generateElement("button",i,"",nameOfShip+"Container","sidebarButton",nameOfShip)
+
+    }
+}
+
 
 //intent is to increase hit count by one
 
