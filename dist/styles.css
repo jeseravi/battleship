@@ -61,7 +61,7 @@
 }
 
 
-#sidebarButton{
+#tinyShip,#mediumShip,#largeShip{
     
     border-width: 5px;
     min-height:50px;
@@ -69,4 +69,8 @@
     min-width:50px;
     max-width:50px;
 
+}
+
+.selectedShip{
+    border-color: red;
 }

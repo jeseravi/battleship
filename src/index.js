@@ -36,11 +36,33 @@ shipDivMaker(largeShip.length, "largeShip");
 function shipDivMaker(shipLength,nameOfShip){
 
     //create dimension number of buttons
-    for (let i=0;i<shipLength;i++){        
-        generateElement("button",i,"",nameOfShip+"Container","sidebarButton",nameOfShip)
+    for (let i=0;i<=shipLength;i++){    
+        
+        generateElement("button",i,"",nameOfShip+"Container",nameOfShip,nameOfShip)
 
     }
+
+    //change color of all buttons in the column to red border if clicked
+    Array.from(document.getElementsByClassName(nameOfShip)).forEach(item => {
+        item.addEventListener('click', event =>{
+            
+            Array.from(document.getElementsByClassName(nameOfShip)).forEach(item => {
+                item.classList.add("selectedShip");
+            })
+
+        })
+    })
+    
+
+
+    
+
+        
 }
+
+
+
+    
 
 
 //intent is to increase hit count by one
