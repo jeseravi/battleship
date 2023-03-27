@@ -9,6 +9,7 @@ generateElement("div","","","content","overallContainer","overallContainer")
 //header container
 generateElement("div","","","overallContainer","headerContainer","headerContainer")
 generateElement("div","","Battleship","headerContainer","header","header")
+generateElement("div","","Instructions: First click on a ship on the right, then click to place it on the board. After all ships are placed, the game begins.","headerContainer","header","header")
 
 //container that contains the board and sidebar
 generateElement("div","","","overallContainer","gameContainer","gameContainer")
@@ -36,10 +37,12 @@ shipDivMaker(largeShip.length, "largeShip");
 function shipDivMaker(shipLength,nameOfShip){
 
     //create dimension number of buttons
-    for (let i=0;i<=shipLength;i++){    
+    for (let i=1;i<=shipLength;i++){    
         
-        generateElement("button",i,"",nameOfShip+"Container",nameOfShip,nameOfShip)
-
+        generateElement("button",i,"",nameOfShip+"Container",nameOfShip,`${nameOfShip} unselectedShip`)
+        
+        
+                
     }
 
     //change color of all buttons in the column to red border if clicked
@@ -47,28 +50,86 @@ function shipDivMaker(shipLength,nameOfShip){
         item.addEventListener('click', event =>{
             
             Array.from(document.getElementsByClassName(nameOfShip)).forEach(item => {
+
+                item.classList.remove("unselectedShip")
                 item.classList.add("selectedShip");
+                //once the ship is clicked, disable the buttons for that ship
+                item.disabled=true;
+
             })
+
+            placeOnBoard(nameOfShip)
+
+            
+            
 
         })
     })
+
+   
     
 
-
-    
-
-        
 }
 
 
+ //need to make sure the only thing they can do at this point
+ //is to click on the board and place their ship
+ function placeOnBoard(nameOfShip){
 
+    //string containing the ship name, so we can reference it in a class later
+    var shipNameString = nameOfShip;
+
+    //make the call "nameOfShip" reference the object
+    nameOfShip = eval(nameOfShip);
     
+    //change the sidebar ship buttons such that they cannot be clicked
+    //they should also visually change to suggest they cannot be clicked
+    Array.from(document.getElementsByClassName("unselectedShip")).forEach(item => {
+        item.disabled=true;
+    })
+    
+    //if a spot on the board is clicked, change the button to the ship class
+    Array.from(document.getElementsByClassName("boardButton")).forEach(item => {
+        item.addEventListener('click', event =>{
+            
+            //when clicked, it should change to the ship's class
+            //this should change its color, along with colors along the same column
+            //depending on the ship length            
+            
+            //need to loop until the Y coordinate has gone far enough
+            for(let i=0;i<nameOfShip.length;i++){
+
+                //split the XY coordinate into an array.
+                var startingID = item.getAttribute('id'); 
+                var splitString = startingID.split(',');
+                let startingCoordinate = parseInt(splitString[1])
+
+                //make sure the function doesn't allow you to place ship too low
+                if(i==0 && (startingCoordinate + nameOfShip.length)>11){
+                    alert("You must place this ship higher on the board")
+                    
+                } else {
+                    var modifiedArray = startingCoordinate+i;
+                    var testString = splitString[0]+","+modifiedArray
+                    document.getElementById(testString).setAttribute("class",`${shipNameString} boardButton`);
+                }
+                    
+            }
+            
 
 
-//intent is to increase hit count by one
+            
+            
+            
 
-tinyShip.shipHitter();
-console.log(tinyShip.timesHit)
+            
+            
+
+        })
+    })
+
+
+}
 
 
 //places the ship on a specific area of the board
@@ -141,3 +202,7 @@ function generateElement(whatIsIt,entryName,innerHTML,whereToPut,id,chosenClass)
     generateEntry.innerHTML=generateHTML;
     document.getElementById(generateWhere).appendChild(generateEntry);
 }
+
+
+
+
