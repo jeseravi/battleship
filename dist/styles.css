@@ -24,15 +24,30 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     margin-right:100px;
-  }
+    
+}
+
+#computerBoardContainer{
+    max-width:500px;
+    max-height:500px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+}
+
+#fillerDiv{
+    margin:100px;
+}
+
   
-  .boardButton{
+.boardButton{
     border-width:5px;
     min-height:50px;
     max-height:50px;
     min-width:50px;
     max-width:50px;
-  }
+}
 
 #sidebarContainer{
 
