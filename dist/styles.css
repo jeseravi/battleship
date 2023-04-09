@@ -41,7 +41,7 @@
 }
 
   
-.boardButton{
+.boardButton, .hitTile{
     border-width:5px;
     min-height:50px;
     max-height:50px;
@@ -74,6 +74,11 @@
 .largeShip{
     background-color:rgb(241, 165, 24);
 }
+
+.hitTile{
+    background-color:red;
+}
+
 
 
 #tinyShip,#mediumShip,#largeShip{

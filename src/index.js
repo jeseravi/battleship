@@ -50,9 +50,38 @@ shipDivMaker(largeShip.length, "largeShip","playerBoard");
 //create the game board. The ID of each square should correspond to its coordinates
 boardMaker(100,"boardContainer","playerBoard");
 
+export function gameMechanics(nameOfShip){
+    
+    const stringName = nameOfShip
+    nameOfShip = eval(nameOfShip);
+
+    //assign event listeners to opponent's board
+    Array.from(document.getElementsByClassName(`computerBoard`)).forEach(item => {
+
+        item.disabled = false;
+  
+    })
+
+    Array.from(document.getElementsByClassName(`${stringName} computerBoard`)).forEach(item => {
+
+        //when a ship tile is clicked, it will increase times hit using the ship class
+        //this should also put viual indicator on the tile to indicate the ship has been hit
+        item.addEventListener('click', event =>{
+            nameOfShip.shipHitter();
+            console.log(nameOfShip.timesHit)
+            item.disabled = true;
+            item.setAttribute("class",`hitTile`)
+            if(Array.from(document.getElementsByClassName(`hitTile`)).length==12){
+                alert("You win!")
+            }
+
+            //after the player takes a turn, allow the computer to turn a random player tile red
+            //make sure that if enough player tiles are red the player loses the game
+        })
+
+    })
+
+    //when a non-ship tile is clicked, it should still turn red, but assign it a different class
 
 
-
-//the CPU should have ships randomly placed. 
-//the ships should be indicated just for demonstration purposes
-
+}

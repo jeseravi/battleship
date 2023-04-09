@@ -21,11 +21,7 @@ export class Ship{
         }
     }
 
-    
 
-    
-
-    
 
 }
 

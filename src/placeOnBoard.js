@@ -1,5 +1,6 @@
-import {generateElement} from "./generateElement"
+import {generateElement} from "./generateElement";
 import { boardMaker, opponentBoard } from "./boardMaker";
+import {gameMechanics} from "./index";
 
 //array to check for duplicates
 let coordinateArray = [];
@@ -51,7 +52,6 @@ let userCoordinateArray = [];
                 let startingCoordinate = parseInt(splitString[1])
                 let yCoordinate = startingCoordinate;
                 let xCoordinate = parseInt(splitString[0])
-                console.log(xCoordinate+","+yCoordinate)
 
                 //make sure the function doesn't allow you to place ship too low
                 if(i==0 && (startingCoordinate + nameOfShip.length)>11){
@@ -175,10 +175,26 @@ let userCoordinateArray = [];
             //push testString coordinate to coordinateArray to check for duplicates
             coordinateArray.push(testString);
   
-
+            //change the class which in turn changes the color of the board tiles
             document.getElementById(testString).setAttribute("class",`${shipNameString} boardButton ${nameOfBoard}`);
-            document.getElementById(testString).disabled=true;
             
+            //when all opponent's ships are placed, begin the game
+            if(Array.from(document.getElementsByClassName(`unselectedBoardButton computerBoard`)).length==88){
+
+                //remove the event listeners from all the unselected board buttons
+                Array.from(document.getElementsByClassName(`boardButton computerBoard`)).forEach(item => {
+                                        
+                    const initialID = item.getAttribute('id');
+                    var old_element = document.getElementById(initialID);
+                    var new_element = old_element.cloneNode(true);
+                    old_element.parentNode.replaceChild(new_element,old_element);
+                    
+                })
+                
+                gameMechanics("tinyShip");
+                gameMechanics("mediumShip");
+                gameMechanics("largeShip");
+            }
         }       
                 
     }
