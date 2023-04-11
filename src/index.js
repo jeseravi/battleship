@@ -12,7 +12,7 @@ generateElement("div","","","content","overallContainer","overallContainer")
 //header container
 generateElement("div","","","overallContainer","headerContainer","headerContainer")
 generateElement("div","","Battleship","headerContainer","header","header")
-generateElement("div","","Instructions: First click on a ship on the right, then click to place it on the board. After all ships are placed, the game begins.","headerContainer","header","header")
+generateElement("div","","Instructions: First click on a ship on the right, then click to place it on the board. After all ships are placed, the game begins. The ships on the opponent's board are visible for demonstration purposes.","headerContainer","header","header")
 
 //container that contains the board and sidebar
 generateElement("div","","","overallContainer","gameContainer","gameContainer")
@@ -68,7 +68,6 @@ export function gameMechanics(nameOfShip){
         //this should also put viual indicator on the tile to indicate the ship has been hit
         item.addEventListener('click', event =>{
             nameOfShip.shipHitter();
-            console.log(nameOfShip.timesHit)
             item.disabled = true;
             item.setAttribute("class",`hitTile`)
             if(Array.from(document.getElementsByClassName(`hitTile`)).length==12){
@@ -81,7 +80,15 @@ export function gameMechanics(nameOfShip){
 
     })
 
-    //when a non-ship tile is clicked, it should still turn red, but assign it a different class
+    //when a non-ship tile is clicked, it should turn blue
+    Array.from(document.getElementsByClassName(`unselectedBoardButton`)).forEach(item => {
 
+        item.addEventListener('click', event =>{
+            item.disabled = true;
+            item.setAttribute("class",`missTile`)
+            
+        })
+
+    })
 
 }

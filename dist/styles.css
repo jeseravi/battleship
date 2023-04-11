@@ -41,7 +41,7 @@
 }
 
   
-.boardButton, .hitTile{
+.boardButton, .hitTile, .missTile{
     border-width:5px;
     min-height:50px;
     max-height:50px;
@@ -77,6 +77,10 @@
 
 .hitTile{
     background-color:red;
+}
+
+.missTile{
+    background-color:blue;
 }
 
 
